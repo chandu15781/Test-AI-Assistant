@@ -1,0 +1,25 @@
+[Test Case] TC_LDW_003 - Lane Departure Warning - Camera Calibration Mismatch
+[Build] 24.2.15
+[ECU Under Test] LDW_ECU (Node ID 0x31)
+[Date] 2025-11-02 11:30:00
+
+[00:00.000] Test started
+[00:00.100] Stimulus: Vehicle speed set to 90 km/h
+[00:00.110] Stimulus: Straight road — clear lane markings, good visibility
+[00:00.500] LDW_ECU: Camera initialized OK — Node 0x32 CAMERA_STATUS = ACTIVE
+[00:00.510] LDW_ECU: Reading calibration data from EEPROM (CRC check)
+[00:00.515] WARNING: Calibration CRC mismatch — expected 0xAF32, got 0xBB01
+[00:00.520] LDW_ECU: Calibration fallback to factory defaults
+[00:01.000] LDW_ECU: Lane detection started with factory calibration
+[00:01.500] LDW_ECU: LANE_OFFSET computed = -0.18m (road center)
+[00:02.000] Stimulus: Simulated lateral drift 0.3m toward right lane boundary
+[00:02.200] LDW_ECU: LANE_OFFSET_RIGHT = 0.12m (computed) vs 0.28m (actual)
+[00:02.210] WARNING: Calibration offset error = 0.16m — exceeds tolerance 0.05m
+[00:02.500] FAIL: LDW_WARNING_RIGHT asserted 420ms late (tolerance: ±200ms)
+[00:02.510] Error Code: 0x3307 - LDW_CALIBRATION_MISMATCH
+[00:02.520] DTC set: C1A12 - "LDW Camera Calibration Data Invalid"
+[00:02.600] Engineering note (manual): EEPROM write during build 24.2.14 flashing
+            corrupted camera intrinsics block. Affects all units flashed in that
+            batch (SN 3201-3350). Recalibration required. Tracked in JIRA-5211.
+[00:02.610] Test result: FAIL
+[Test] TC_LDW_003 finished. Duration: 2.61s. Verdict: FAIL.

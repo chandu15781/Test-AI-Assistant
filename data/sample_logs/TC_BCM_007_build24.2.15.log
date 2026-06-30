@@ -1,0 +1,19 @@
+[Test Case] TC_BCM_007 - Body Control Module - Door Lock Sequence
+[Build] 24.2.15
+[ECU Under Test] BCM_ECU (Node ID 0x05)
+[Jenkins Job] nightly_hil_regression #1842
+[Date] 2025-11-02 03:11:09
+
+[00:00.000] Test started
+[00:00.030] Stimulus: Send LOCK command via CAN ID 0x110
+[00:00.040] CAN Trace: ID 0x111 DOOR_LOCK_STATUS = LOCKING
+[00:00.500] Expected: DOOR_LOCK_STATUS = LOCKED within 400ms
+[00:00.520] CAN Trace: ID 0x111 DOOR_LOCK_STATUS = LOCKED
+[00:00.530] PASS: Lock sequence completed in 490ms (within 600ms spec limit)
+[00:01.000] Stimulus: Send UNLOCK command via CAN ID 0x110
+[00:01.700] CAN Trace: ID 0x111 DOOR_LOCK_STATUS = UNLOCK_FAULT
+[00:01.705] DTC set: B10A300 - "Door Lock Actuator Stall - Driver Door"
+[00:01.710] FAIL: Unlock command did not complete, actuator stall detected
+[00:01.720] Note: Third consecutive nightly run with this fault on driver door only;
+            harness connector X14 suspected (intermittent contact).
+[Test] TC_BCM_007 finished. Duration: 1.72s. Verdict: FAIL.

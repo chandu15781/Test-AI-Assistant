@@ -1,0 +1,15 @@
+[Test Case] TC_AEB_044 - Autonomous Emergency Braking - Pedestrian Detection
+[Build] 24.2.15
+[ECU Under Test] AEB_ECU (Node ID 0x18)
+[Date] 2025-11-02 09:30:02
+
+[00:00.000] Test started
+[00:00.020] CAN channel 1 initialized, baud 500kbps
+[00:00.100] Stimulus: Inject pedestrian object at 25m, vehicle speed 40 km/h
+[00:00.450] CAN Trace: ID 0x4B2 AEB_OBJECT_DETECTED = TRUE
+[00:00.900] CAN Trace: ID 0x4B3 AEB_BRAKE_REQUEST = TRUE, requested decel = 6.2 m/s^2
+[00:01.200] Measured vehicle decel = 6.1 m/s^2 (within tolerance)
+[00:02.000] Vehicle speed = 0 km/h, stop distance = 22.4m (limit 23m)
+[00:02.010] PASS: Braking met required deceleration profile and stopped within distance limit
+[Test] TC_AEB_044 finished. Duration: 2.05s. Verdict: PASS.
+CHANDRASHEKAR REDDY

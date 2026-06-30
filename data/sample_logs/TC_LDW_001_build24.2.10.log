@@ -1,0 +1,24 @@
+[Test Case] TC_LDW_001 - Lane Departure Warning - Camera Signal Acquisition
+[Build] 24.2.10
+[ECU Under Test] LDW_ECU (Node ID 0x31)
+[Date] 2025-10-18 14:20:05
+
+[00:00.000] Test started
+[00:00.200] Stimulus: Vehicle speed set to 72 km/h
+[00:00.210] Stimulus: Lane markings visible — white solid left, dashed right
+[00:00.500] LDW_ECU: Camera initialization sequence started
+[00:01.100] LDW_ECU: Requesting CAMERA_STATUS from Node 0x32
+[00:01.600] WARNING: No response from Front Camera ECU (Node 0x32) — timeout 500ms
+[00:01.610] CAN Trace: ID 0x4B0 CAMERA_STATUS = NOT_AVAILABLE
+[00:01.620] LDW_ECU: Retry 1 of 3 for camera handshake
+[00:02.130] WARNING: No response from Front Camera ECU (Node 0x32) — retry 1 failed
+[00:02.640] WARNING: No response from Front Camera ECU (Node 0x32) — retry 2 failed
+[00:03.150] ERROR: Camera signal acquisition failed after 3 retries
+[00:03.155] Error Code: 0x3101 - LDW_CAMERA_UNAVAILABLE
+[00:03.160] DTC set: U0168 - "Lost Communication with Front Camera ECU"
+[00:03.200] FAIL: Signal LDW_ACTIVE not asserted — camera feed unavailable
+[00:03.210] Test result: FAIL
+[00:03.220] Engineering note (manual): Front camera I2C power line measured 2.7V at
+            startup (nominal 3.3V). Possible cold solder joint on J4 connector or
+            LDO regulator marginal on PCB rev C. Escalated as JIRA-5102.
+[Test] TC_LDW_001 finished. Duration: 3.22s. Verdict: FAIL.

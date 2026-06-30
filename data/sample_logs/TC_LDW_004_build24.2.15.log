@@ -1,0 +1,22 @@
+[Test Case] TC_LDW_004 - Lane Departure Warning - Nominal Operation
+[Build] 24.2.15
+[ECU Under Test] LDW_ECU (Node ID 0x31)
+[Date] 2025-11-02 13:00:00
+
+[00:00.000] Test started
+[00:00.100] Stimulus: Vehicle speed set to 78 km/h
+[00:00.110] Stimulus: Dry road — clear white lane markings, good visibility
+[00:00.500] LDW_ECU: Camera initialized OK — Node 0x32 CAMERA_STATUS = ACTIVE
+[00:00.510] LDW_ECU: Calibration CRC OK (0xAF32) — using stored camera intrinsics
+[00:01.000] LDW_ECU: Lane detection started
+[00:01.100] LDW_ECU: LANE_CONF_LEFT = 91, LANE_CONF_RIGHT = 88 — above threshold (60)
+[00:01.200] LDW_ECU: Lane tracking active — LDW_ACTIVE = TRUE
+[00:02.000] Stimulus: Simulated lateral drift 0.25m toward left lane boundary
+[00:02.110] LDW_ECU: LANE_OFFSET_LEFT = 0.22m — approaching boundary
+[00:02.180] LDW_ECU: LDW_WARNING_LEFT asserted (latency: 180ms — within 200ms tolerance)
+[00:02.185] CAN Trace: ID 0x4C2 LDW_STATUS = WARNING_LEFT
+[00:02.190] Stimulus: Driver correction — steering returned to center
+[00:02.400] LDW_ECU: LANE_OFFSET_LEFT = 0.05m — vehicle re-centered
+[00:02.410] LDW_ECU: LDW_WARNING_LEFT de-asserted
+[00:03.000] Test result: PASS
+[Test] TC_LDW_004 finished. Duration: 3.00s. Verdict: PASS.

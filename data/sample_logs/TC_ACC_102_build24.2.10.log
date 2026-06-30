@@ -1,0 +1,20 @@
+[Test Case] TC_ACC_102 - Adaptive Cruise Control - Radar Target Acquisition
+[Build] 24.2.10
+[ECU Under Test] ACC_ECU (Node ID 0x12)
+[Date] 2025-10-18 14:02:11
+
+[00:00.000] Test started
+[00:00.500] Stimulus: Set vehicle speed = 80 km/h
+[00:00.510] Stimulus: Set radar target distance = 45m, relative speed = -10 km/h
+[00:02.800] WARNING: Radar ECU (Node 0x21) CAN bus-off event detected
+[00:02.805] CAN Trace: ID 0x3A1 RADAR_STATUS = NOT_AVAILABLE
+[00:02.810] Radar ECU restart sequence initiated (watchdog reset)
+[00:06.000] Timeout timer T_ACC_ACTIVATE expired (5000 ms)
+[00:06.001] FAIL: Signal ACC_STATUS not received within timeout window
+[00:06.002] Error Code: 0x2345 - ACC_ACTIVATION_TIMEOUT
+[00:06.010] DTC set: P189A00 - "ACC Radar Input Implausible"
+[00:06.050] Test result: FAIL
+[00:06.060] Engineering note (manual): Bench power supply showed voltage ripple of 280mV
+            on the radar 12V rail during the load step. Suspect marginal radar power
+            filtering on rev B harness. Filed as JIRA-4287.
+[Test] TC_ACC_102 finished. Duration: 6.06s. Verdict: FAIL.

@@ -1,0 +1,18 @@
+# Core RAG stack (open-source, no API keys required)
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+requests>=2.31.0
+
+# UI
+streamlit>=1.36.0
+
+# LLM
+groq>=0.4.1
+
+# Connectors (install only what you need)
+python-jenkins>=1.8.2     # Jenkins connector
+jira>=3.8.0                # Jira connector
+# Polarion connector uses `requests` only (already listed above)
+
+# Optional: only if you use the CANoe COM API path (Windows only)
+# pywin32>=306

@@ -1,0 +1,27 @@
+[Test Case] TC_ACC_102 - Adaptive Cruise Control - Radar Target Acquisition
+[Build] 24.2.15
+[ECU Under Test] ACC_ECU (Node ID 0x12)
+[Date] 2025-11-02 09:14:33
+
+[00:00.000] Test started
+[00:00.012] CAN channel 1 initialized, baud 500kbps
+[00:00.050] ECU ACC_ECU reports state: STANDBY
+[00:00.500] Stimulus: Set vehicle speed = 80 km/h
+[00:00.510] Stimulus: Set radar target distance = 45m, relative speed = -10 km/h
+[00:01.000] Expected: ACC_ECU transitions to ACTIVE within 2000ms
+[00:01.020] CAN Trace: ID 0x3A1 RADAR_STATUS = OK, last update 00:01.018
+[00:02.500] CAN Trace: ID 0x3A1 RADAR_STATUS = OK
+[00:03.100] WARNING: Radar ECU (Node 0x21) CAN bus-off event detected
+[00:03.105] CAN Trace: ID 0x3A1 RADAR_STATUS = NOT_AVAILABLE
+[00:03.110] Radar ECU restart sequence initiated (watchdog reset)
+[00:03.900] CAN Trace: ID 0x3A1 RADAR_STATUS = INIT
+[00:05.000] Signal ACC_STATUS expected on CAN ID 0x2A0, not received
+[00:06.000] Timeout timer T_ACC_ACTIVATE expired (5000 ms)
+[00:06.001] FAIL: Signal ACC_STATUS not received within timeout window
+[00:06.002] Error Code: 0x2345 - ACC_ACTIVATION_TIMEOUT
+[00:06.010] DTC set: P189A00 - "ACC Radar Input Implausible"
+[00:06.050] Test result: FAIL
+[00:06.060] Root signal chain: RADAR_STATUS (0x3A1) -> ACC_INPUT_VALID -> ACC_STATUS (0x2A0)
+[00:06.070] Note: Radar ECU bus-off + watchdog reset occurred 1980ms before timeout expiry,
+            consistent with known radar power supply ripple issue under load step changes.
+[Test] TC_ACC_102 finished. Duration: 6.07s. Verdict: FAIL.
